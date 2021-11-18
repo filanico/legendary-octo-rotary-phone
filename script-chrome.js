@@ -54,7 +54,7 @@ const delay = async(msecs)=>new Promise((res,rej)=>{setTimeout(()=>{res();},msec
 		resp = await resp.json();
 		var data = resp
 			.offers
-			.filter( o => (o.bmp-o.offer.ReceiveAmountInWei)/o.offer.ReceiveAmountInWei <= rate )
+			.filter( o => (o.bmp-o.offer.ReceiveAmountInWei)/o.offer.ReceiveAmountInWei >= rate )
 			.map( o => {
 				var _rate = (o.bmp-o.offer.ReceiveAmountInWei)/o.offer.ReceiveAmountInWei;
 				var _extraInfo = o.bmp == o.offer.ReceiveAmountInWei ? '' : `(bmp:${o.bmp} ReceiveAmountInWei${o.offer.ReceiveAmountInWei})`;
